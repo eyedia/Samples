@@ -34,7 +34,6 @@ namespace Eyedia.Samples.Books
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Publisher> Publishers { get; set; }
         public virtual DbSet<State> States { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ZipCode> ZipCodes { get; set; }
     }
 }

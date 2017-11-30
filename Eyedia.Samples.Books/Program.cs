@@ -9,15 +9,17 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using GenericParsing;
+using Eyedia.Samples.Books;
 
 namespace ConTest
 {
     class Program
     {
         static void Main(string[] args)
-        {
-            //GetCityId("Data Source=10.34.18.2,1100\\SQLEXPRESS;Application Name=SRE;Initial Catalog=Books;User Id=regtech;Password=regtech123;");          
-            var parser = new GenericParserAdapter("c:\\temp\\500.csv");
+        {                   
+            var parser = new GenericParserAdapter(
+                Path.Combine(new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName, 
+                "Data", "500.csv"));
             parser.FirstRowHasHeader = true;
             DataTable t = parser.GetDataTable();
             foreach (DataRow r in t.Rows)
@@ -41,7 +43,7 @@ namespace ConTest
 
                     if (city == null)
                     {
-                        City newCity = new ConTest.City();
+                        City newCity = new City();
                         newCity.Name =cm;
                         newCity.StateId = state.StateId;
                         city = ctx.Cities.Add(newCity);
@@ -55,7 +57,7 @@ namespace ConTest
 
                     if (zc == null)
                     {
-                        ZipCode newzc = new ConTest.ZipCode();
+                        ZipCode newzc = new ZipCode();
                         newzc.ZipCode1 =zcc;
                         newzc.CityId = city.CityId;
                         zc = ctx.ZipCodes.Add(newzc);
