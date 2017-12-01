@@ -22,7 +22,7 @@ namespace Eyedia.Samples.Books
     
         public int AuthorId { get; set; }
         public string Name { get; set; }
-        public byte[] SSN { get; set; }
+        public string SSN { get; set; }
         public int ZipCodeId { get; set; }
     
         public virtual ZipCode ZipCode { get; set; }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Eyedia.Aarbac.Framework;
 using System.IO;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using GenericParsing;
+using Eyedia.Aarbac.Framework;
 using Eyedia.Samples.Books;
 
 namespace ConTest
@@ -16,6 +16,35 @@ namespace ConTest
     class Program
     {
         static void Main(string[] args)
+        {
+            SetDir();
+            using (var ctx = new BooksEntities())
+            {
+                List<Author> authors = ctx.Authors.ToList();
+                foreach (Author author in authors)
+                {
+
+                    author.SSN = RandomString(9);
+
+                }
+                ctx.SaveChanges();
+            }
+        }
+
+        static void SetDir()
+        {
+            string path = string.Empty;
+            string codingdir = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
+            if (Directory.Exists(Path.Combine(codingdir, "DataBases")))
+                path = Path.Combine(codingdir, "DataBases");           
+            else
+                throw new DirectoryNotFoundException("Samples directory not found!");
+            
+            AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetFullPath(path));            
+        }
+
+
+        static void Test()
         {                   
             var parser = new GenericParserAdapter(
                 Path.Combine(new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName, 
@@ -74,7 +103,7 @@ namespace ConTest
                     {
                         Author newAuthor = new Author();
                         newAuthor.Name = name;
-                        newAuthor.SSN = UTF8Encoding.UTF8.GetBytes(RandomString(11));
+                        newAuthor.SSN = RandomString(11);
                         newAuthor.ZipCodeId = zc.ZipCodeId;
                         author = ctx.Authors.Add(newAuthor);
                     }

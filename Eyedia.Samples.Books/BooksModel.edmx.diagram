@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fb4b7e1d5c614b7c9da05d652898a14a" Name="Diagram1">
+        <EntityTypeShape EntityType="BooksModel.Author" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BooksModel.Book" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BooksModel.BookAuthor" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BooksModel.BookCategory" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BooksModel.Category" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BooksModel.City" Width="1.5" PointX="1.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BooksModel.Country" Width="1.5" PointX="1.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BooksModel.Publisher" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BooksModel.State" Width="1.5" PointX="1.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BooksModel.ZipCode" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="BooksModel.FK_Author_ZipCode" ManuallyRouted="false" />
+        <AssociationConnector Association="BooksModel.FK_BookAuthor_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="BooksModel.FK_Book_Publisher" ManuallyRouted="false" />
+        <AssociationConnector Association="BooksModel.FK_BookAuthor_Book" ManuallyRouted="false" />
+        <AssociationConnector Association="BooksModel.FK_BookCategory_Book" ManuallyRouted="false" />
+        <AssociationConnector Association="BooksModel.FK_BookCategory_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="BooksModel.FK_City_State" ManuallyRouted="false" />
+        <AssociationConnector Association="BooksModel.FK_ZipCode_City" ManuallyRouted="false" />
+        <AssociationConnector Association="BooksModel.FK_State_Country" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
